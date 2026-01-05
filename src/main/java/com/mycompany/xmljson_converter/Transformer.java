@@ -16,7 +16,9 @@ public class Transformer {
 
     /**
      * PATH 1: XML to JSON
-     * Configured to wrap plain text in a "value" tag.
+     * 
+     *
+     *
      */
     public static String convertWithJackson(String SXml) {
         try { 
