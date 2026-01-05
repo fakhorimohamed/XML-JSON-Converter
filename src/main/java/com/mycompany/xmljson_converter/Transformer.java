@@ -21,7 +21,7 @@ public class Transformer {
     public static String convertWithJackson(String SXml) {
         try { 
             JacksonXmlModule module = new JacksonXmlModule();
-            // Instead of #text, we name it "value" so it becomes <value>A</value>
+            
             module.setXMLTextElementName("value");
             
             XmlMapper xmlMapper = new XmlMapper(module);
@@ -38,7 +38,8 @@ public class Transformer {
 
     /**
      * PATH 2: JSON to XML
-     * Pure Tag Logic: No attributes, no special characters.
+     *
+     *
      */
     public static String convert(String jsonInput, String rootName) throws Exception {
         json = jsonInput.trim();
@@ -105,10 +106,10 @@ public class Transformer {
             if (key == null || key.trim().isEmpty()) key = "item";
             
             skipWhitespace();
-            index++; // skip ':'
+            index++;
             skipWhitespace();
 
-            // PURE TAG LOGIC: Every key becomes a StartElement
+           
             if (json.charAt(index) == '[') {
                 parseJson(writer, key); 
             } else {
@@ -130,7 +131,7 @@ public class Transformer {
         index++; 
     }
 
-    // Helper Methods
+    // Methods For Help
     public static void writeNewLine(XMLStreamWriter writer) throws Exception {
         writer.writeCharacters("\n" + "  ".repeat(depth));
     }
